@@ -6,8 +6,21 @@ var life = 3;
 var groundnum = 6;
 //生命值圖片路徑
 var lifeImg = "pic/heart.png";
-init();
-displayLife(life);
+//document.getElementById("startgame").onclick = start();
+// init();
+// displayLife(life);
+
+//開始遊戲
+function start(){
+    init();
+    displayLife(life);
+   
+    var startPage = document.getElementById('div_startpage');
+    startPage.style.display='none';
+    var game=document.getElementById('div_game');
+    game.style.display='block';
+}
+
 //初始化
 function init() {
     //顯示倒數畫面
@@ -118,8 +131,10 @@ function fadeOutPrecount(id) {
 
 //遊戲結束
 function gameover() {
-    var element = document.getElementById(id);
-    element.style.visibility = 'visible';
+    var gamePage = document.getElementById('div_game');
+    gamePage.style.display='none';
+    var gameoverPage=document.getElementById('div_gameover');
+    gameoverPage.style.display='block';
 }
 
 //答錯
