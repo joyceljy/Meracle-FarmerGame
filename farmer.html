@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<script src="assets/underscore-master/underscore.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>陣列產生</title>
+
+</head>
+
+<body>
+    <!-- 生命值 -->
+    <div id=life>
+        <text>生命值：</text>
+    </div>
+
+    <!-- 分數值 -->
+    <div id=score>
+        <text>目前得分：</text>
+    </div>
+
+    <!-- 倒數gif -->
+    <div id="div_precountdown" class="precountdown"></div>
+
+    <!-- 遊戲結束 -->
+    <div id="div_gameover" class="gameover">
+        <text>總分：</text> <br />
+        <button>返回遊戲大廳</button>
+    </div>
+
+    <!-- 答錯 -->
+    <div id="div_wrong" class="wrong"></div>
+    <!-- 答對 -->
+    <div id="div_correct" class="correct"></div>
+
+    <table>
+        <tr>
+            <td class="grd">
+                <!-- 土地 -->
+                <div>
+                    <img id="ground1" class="grdpic" src="pic/blossom.png">
+                </div>
+                <!-- growgif -->
+                <div onclick="harvest(1)">
+                    <img id="grow1" class="growgif" src="">
+                </div>
+            </td>
+            <td class="grd">
+                <div>
+                    <img id="ground2" class="grdpic" src="pic/blossom.png">
+                </div>
+                <div onclick="harvest(2)">
+                    <img id="grow2" class="growgif" src="">
+                </div>
+            </td>
+            <td class="grd">
+                <div>
+                    <img id="ground3" class="grdpic" src="pic/blossom.png">
+                </div>
+                <div onclick="harvest(3)">
+                    <img id="grow3" class="growgif" src="">
+                </div>
+            </td>
+        </tr>
+        <td class="grd">
+            <div>
+                <img id="ground4" class="grdpic" src="pic/blossom.png">
+            </div>
+            <div onclick="harvest(4)">
+                <img id="grow4" class="growgif" src="">
+            </div>
+        </td>
+        <td class="grd">
+            <div>
+                <img id="ground5" class="grdpic" src="pic/blossom.png">
+            </div>
+            <div onclick="harvest(5)">
+                <img id="grow5" class="growgif" src="pic/blossom2.gif">
+            </div>
+        </td>
+        <td class="grd">
+            <div>
+                <img id="ground6" class="grdpic" src="pic/blossom.png">
+            </div>
+            <div onclick="harvest(6)">
+                <img id="grow6" class="growgif" src="pic/blossom2.gif">
+            </div>
+        </td>
+    </table>
+
+</body>
+
+
+</html>
+<script src="practise.js"></script>
+<style>
+    .fadeOut {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 2s, opacity 2s linear;
+    }
+
+    .precountdown {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        /* background: url(pic/countdown.gif) center no-repeat; */
+    }
+
+    .gameover {
+        visibility: hidden;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(pic/gameover.png) center no-repeat;
+    }
+
+    .growgif {
+        display: none;
+        width: 300px;
+        height: 300px;
+    }
+
+    .grdpic {
+        width: 300px;
+        height: 300px;
+    }
+
+    .grd {
+        width: 300px;
+        height: 300px;
+    }
+    .wrong{
+        visibility: hidden;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(pic/wrong.png) center no-repeat;
+    }
+    .correct{
+        visibility: hidden;
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(pic/correct.png) center no-repeat;
+    }
+
+    #life {
+        width: 200px;
+        height: 30px;
+    }
+</style>
