@@ -41,7 +41,7 @@
         <div id="div_precountdown" class="precountdown"></div>
 
         <!-- 遊戲結束 -->
-        <div id="div_gameover" class="gameover">
+        <div id="div_gameover">
             <text>總分：</text> <br />
             <button>返回遊戲大廳</button>
         </div>
@@ -51,59 +51,89 @@
         <!-- 答對 -->
         <div id="div_correct" class="correct"></div>
 
-        <table>
+        <table id="div_ground">
             <tr>
                 <td class="grd">
                     <!-- 土地 -->
-                    <div>
-                        <img id="ground1" class="grdpic" src="pic/blossom.png">
+                    <div id="ground7">
+                        <img class="grdpic" src="pic/blossom.png">
                     </div>
                     <!-- growgif -->
-                    <div onclick="harvest(1)">
-                        <img id="grow1" class="growgif" src="">
+                    <div onclick="harvest(7)" id="grow7">
+                        <img class="growgif" src="">
                     </div>
                 </td>
                 <td class="grd">
-                    <div>
-                        <img id="ground2" class="grdpic" src="pic/blossom.png">
+                    <div id="ground8">
+                        <img class="grdpic" src="pic/blossom.png">
                     </div>
-                    <div onclick="harvest(2)">
-                        <img id="grow2" class="growgif" src="">
+                    <div onclick="harvest(8)" id="grow8">
+                        <img class="growgif" src="">
                     </div>
                 </td>
                 <td class="grd">
-                    <div>
-                        <img id="ground3" class="grdpic" src="pic/blossom.png">
+                    <div id="ground9">
+                        <img class="grdpic" src="pic/blossom.png">
                     </div>
-                    <div onclick="harvest(3)">
-                        <img id="grow3" class="growgif" src="">
+                    <div onclick="harvest(9)" id="grow9">
+                        <img class="growgif" src="">
                     </div>
                 </td>
             </tr>
-            <td class="grd">
-                <div>
-                    <img id="ground4" class="grdpic" src="pic/blossom.png">
-                </div>
-                <div onclick="harvest(4)">
-                    <img id="grow4" class="growgif" src="">
-                </div>
-            </td>
-            <td class="grd">
-                <div>
-                    <img id="ground5" class="grdpic" src="pic/blossom.png">
-                </div>
-                <div onclick="harvest(5)">
-                    <img id="grow5" class="growgif" src="pic/blossom2.gif">
-                </div>
-            </td>
-            <td class="grd">
-                <div>
-                    <img id="ground6" class="grdpic" src="pic/blossom.png">
-                </div>
-                <div onclick="harvest(6)">
-                    <img id="grow6" class="growgif" src="pic/blossom2.gif">
-                </div>
-            </td>
+            <tr>
+                <td class="grd">
+                    <div id="ground1">
+                        <img class="grdpic" src="pic/blossom.png">
+                    </div>
+                    <div onclick="harvest(1)" id="grow1">
+                        <img class="growgif" src="">
+                    </div>
+                </td>
+                <td class="grd">
+                    <div id="ground2">
+                        <img class="grdpic" src="pic/blossom.png">
+                    </div>
+                    <div onclick="harvest(2)" id="grow2">
+                        <img class="growgif" src="pic/blossom2.gif">
+                    </div>
+                </td>
+                <td class="grd">
+                    <div id="ground3">
+                        <img class="grdpic" src="pic/blossom.png">
+                    </div>
+                    <div onclick="harvest(3)" id="grow3">
+                        <img class="growgif" src="pic/blossom2.gif">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="grd">
+                    <!-- 土地 -->
+                    <div id="ground4">
+                        <img class="grdpic" src="pic/blossom.png">
+                    </div>
+                    <!-- growgif -->
+                    <div onclick="harvest(4)" id="grow4">
+                        <img class="growgif" src="">
+                    </div>
+                </td>
+                <td class="grd">
+                    <div id="ground5">
+                        <img class="grdpic" src="pic/blossom.png">
+                    </div>
+                    <div onclick="harvest(5)" id="grow5">
+                        <img class="growgif" src="">
+                    </div>
+                </td>
+                <td class="grd">
+                    <div id="ground6">
+                        <img class="grdpic" src="pic/blossom.png">
+                    </div>
+                    <div onclick="harvest(6)" id="grow6">
+                        <img class="growgif" src="">
+                    </div>
+                </td>
+            </tr>
         </table>
     </div>
 </body>
@@ -126,17 +156,6 @@
         height: 100%;
         z-index: 9999;
         /* background: url(pic/countdown.gif) center no-repeat; */
-    }
-
-    .gameover {
-        visibility: hidden;
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        z-index: 9999;
-        background: url(pic/gameover.png) center no-repeat;
     }
 
     .growgif {
@@ -185,7 +204,20 @@
     #div_game {
         display: none;
     }
-    #div_gameover{
+
+    #div_gameover {
         display: none;
+    }
+
+    #ground1,
+    #ground2,
+    #ground3,
+    #ground4,
+    #ground5,
+    #ground6,
+    #ground7,
+    #ground8,
+    #ground9 {
+        visibility: hidden;
     }
 </style>

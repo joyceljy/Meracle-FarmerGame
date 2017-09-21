@@ -3,7 +3,7 @@ var resultArr = [];
 //生命起始值
 var life = 3;
 //農田總數
-var groundnum = 6;
+var groundnum = 3;
 //生命值圖片路徑
 var lifeImg = "pic/heart.png";
 //document.getElementById("startgame").onclick = start();
@@ -11,14 +11,15 @@ var lifeImg = "pic/heart.png";
 // displayLife(life);
 
 //開始遊戲
-function start(){
+function start() {
     init();
     displayLife(life);
-   
+
     var startPage = document.getElementById('div_startpage');
-    startPage.style.display='none';
-    var game=document.getElementById('div_game');
-    game.style.display='block';
+    startPage.style.display = 'none';
+    var game = document.getElementById('div_game');
+    game.style.display = 'block';
+
 }
 
 //初始化
@@ -34,8 +35,13 @@ function init() {
     //清空陣列
     answerArr = [];
     resultArr = [];
+
+   
     //產生resultArr
     generateRange(groundnum, 1, groundnum);
+
+     //關卡設定
+     levelSettings();
     //倒數畫面消失
     setTimeout(function () { fadeOutPrecount(div_precountdown); }, 4000);
 }
@@ -52,6 +58,24 @@ function displayLife(life) {
         element.appendChild(img);
     }
 
+}
+
+//關卡設定
+function levelSettings() {
+    for (i = 1; i <= resultArr.length; i++) {
+        var grd = ("ground" + i).toString();
+        var grdele = document.getElementById(grd);
+        grdele.style.display = 'block';
+        var grow = ("grow" + i).toString();
+        var growele = document.getElementById(grow);
+        growele.getElementsByTagName('img')[0].style.display = 'none';
+    }
+    for (i = 1; i <= groundnum; i++) {
+        var id = ("ground" + i).toString();
+        var element = document.getElementById(id);
+        element.style.visibility = 'visible';
+
+    }
 }
 
 //產生亂數陣列
@@ -110,14 +134,17 @@ function compareArray(resultArr, answerArr) {
 //隱藏div區塊
 function hide(id) {
     var element = document.getElementById(id);
+
     element.style.display = 'none';
 }
 
 //顯示div區塊
 function showgrow(id) {
     var element = document.getElementById(id);
-    element.style.display = 'block';
-    element.src = "pic/blossom2.gif" + '?' + (new Date().getTime())
+    var imgele = element.getElementsByTagName('img')[0];
+    console.log(imgele);
+    imgele.style.display = 'block';
+    imgele.src = "pic/blossom2.gif" + '?' + (new Date().getTime());
 }
 
 function fadeOutPrecount(id) {
@@ -132,9 +159,9 @@ function fadeOutPrecount(id) {
 //遊戲結束
 function gameover() {
     var gamePage = document.getElementById('div_game');
-    gamePage.style.display='none';
-    var gameoverPage=document.getElementById('div_gameover');
-    gameoverPage.style.display='block';
+    gamePage.style.display = 'none';
+    var gameoverPage = document.getElementById('div_gameover');
+    gameoverPage.style.display = 'block';
 }
 
 //答錯
@@ -144,7 +171,7 @@ function answerWrong() {
     var image = element.querySelectorAll('[src="' + lifeImg + '"]');
     var wrongclass = document.getElementsByClassName('wrong');
     wrongclass[0].style.visibility = 'visible';
-    setTimeout(function() {
+    setTimeout(function () {
         wrongclass[0].style.visibility = 'hidden';
         if (image != []) {
             element.removeChild(image[0]);
@@ -156,18 +183,26 @@ function answerWrong() {
             //這關再來一次
             init();
         }
-      }, 2000);
+    }, 2000);
 }
 
 //答對
-function answerCorrect(){
+function answerCorrect() {
     var correctclass = document.getElementsByClassName('correct');
     correctclass[0].style.visibility = 'visible';
-    setTimeout(function() {
+    setTimeout(function () {
         correctclass[0].style.visibility = 'hidden';
         //進入下一關
+        if (groundnum != 9) {
+            groundnum++;
+            init();
+        } else {
+            //遊戲結束
+            gameover();
+        }
 
-      }, 2000);
+
+    }, 2000);
 }
 
 
