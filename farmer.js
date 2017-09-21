@@ -6,9 +6,6 @@ var life = 3;
 var groundnum = 3;
 //生命值圖片路徑
 var lifeImg = "pic/heart.png";
-//document.getElementById("startgame").onclick = start();
-// init();
-// displayLife(life);
 
 //開始遊戲
 function start() {
