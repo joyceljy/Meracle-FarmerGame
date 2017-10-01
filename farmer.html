@@ -2,6 +2,7 @@
 <html>
 <script src="assets/underscore-master/underscore.js"></script>
 
+
 <head>
     <meta charset="UTF-8">
     <title>陣列產生</title>
@@ -27,6 +28,7 @@
 
     <!-- 遊戲畫面 -->
     <div id="div_game">
+        <img src="./pic/gamebg.png" alt="" draggable="false" id="gamebg">
         <!-- 生命值 -->
         <div id=life>
             <text>生命值：</text>
@@ -36,105 +38,104 @@
         <div id=score>
             <text>目前得分：</text>
         </div>
+        <div id=sun>
+            <img src="pic/sun.png" width=250 height=180 draggable="false">
+        </div>
+        <div id=grass style=z-index:-3>
+            <img src="pic/grass.png" width=100% height=660 draggable="false">
+        </div>
+        <div id=house style=z-index:-4>
+            <img src="pic/farmhouse.png" width="400" height="300" draggable="false">
+        </div>
+        <div id=fence style=z-index:-3>
+            <img src="pic/fence.png" width=1950 height=250>
+        </div>
+        <div id=billboard>
+            <img src="pic/billboard.png" width=300>
+        </div>
+
 
         <!-- 倒數gif -->
         <div id="div_precountdown" class="precountdown"></div>
-
-        <!-- 遊戲結束 -->
-        <div id="div_gameover">
-            <text>總分：</text> <br />
-            <button>返回遊戲大廳</button>
-        </div>
 
         <!-- 答錯 -->
         <div id="div_wrong" class="wrong"></div>
         <!-- 答對 -->
         <div id="div_correct" class="correct"></div>
 
-        <table id="div_ground">
-            <tr>
-                <td class="grd">
-                    <!-- 土地 -->
-                    <div id="ground7">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <!-- growgif -->
-                    <div onclick="harvest(7)" id="grow7">
-                        <img class="growgif" src="">
-                    </div>
-                </td>
-                <td class="grd">
-                    <div id="ground8">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <div onclick="harvest(8)" id="grow8">
-                        <img class="growgif" src="">
-                    </div>
-                </td>
-                <td class="grd">
-                    <div id="ground9">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <div onclick="harvest(9)" id="grow9">
-                        <img class="growgif" src="">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="grd">
-                    <div id="ground1">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <div onclick="harvest(1)" id="grow1">
-                        <img class="growgif" src="">
-                    </div>
-                </td>
-                <td class="grd">
-                    <div id="ground2">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <div onclick="harvest(2)" id="grow2">
-                        <img class="growgif" src="pic/blossom2.gif">
-                    </div>
-                </td>
-                <td class="grd">
-                    <div id="ground3">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <div onclick="harvest(3)" id="grow3">
-                        <img class="growgif" src="pic/blossom2.gif">
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="grd">
-                    <!-- 土地 -->
-                    <div id="ground4">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <!-- growgif -->
-                    <div onclick="harvest(4)" id="grow4">
-                        <img class="growgif" src="">
-                    </div>
-                </td>
-                <td class="grd">
-                    <div id="ground5">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <div onclick="harvest(5)" id="grow5">
-                        <img class="growgif" src="">
-                    </div>
-                </td>
-                <td class="grd">
-                    <div id="ground6">
-                        <img class="grdpic" src="pic/blossom.png">
-                    </div>
-                    <div onclick="harvest(6)" id="grow6">
-                        <img class="growgif" src="">
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div id="div_ground" style=z-index:-2>
+            <img src="pic/field_bottom.png" height=595 draggable="false">
+            <!-- 土地 -->
+            <div id="ground7">
+                <img class="grdpic_row1" src="pic/field_left.png" draggable="false">
+            </div>
+            <!-- growgif -->
+            <div onclick="harvest(7)" id="grow7">
+                <img class="growgif_row1" src="">
+            </div>
+
+            <div id="ground8">
+                <img class="grdpic_row2" src="pic/field_left.png" draggable="false">
+            </div>
+            <div onclick="harvest(8)" id="grow8">
+                <img class="growgif_row2" src="">
+            </div>
+
+            <div id="ground9">
+                <img class="grdpic_row3" src="pic/field_left.png" draggable="false">
+            </div>
+            <div onclick="harvest(9)" id="grow9">
+                <img class="growgif_row3" src="">
+            </div>
+
+            <div id="ground1">
+                <img class="grdpic_row1" src="pic/field_middle.png" draggable="false">
+            </div>
+            <div onclick="harvest(1)" id="grow1" style=z-index:2>
+                <img class="growgif_row1" src="">
+            </div>
+
+            <div id="ground2">
+                <img class="grdpic_row2" src="pic/field_middle.png" draggable="false" style=z-index:2>
+            </div>
+            <div onclick="harvest(2)" id="grow2">
+                <img class="growgif_row2" src="pic/blossom2.gif">
+            </div>
+
+            <div id="ground3">
+                <img class="grdpic_row3" src="pic/field_middle.png" draggable="false" style=z-index:2>
+            </div>
+            <div onclick="harvest(3)" id="grow3">
+                <img class="growgif_row3" src="pic/blossom2.gif">
+            </div>
+
+
+
+            <!-- 土地 -->
+            <div id="ground4">
+                <img class="grdpic_row1" src="pic/field_right.png" draggable="false">
+            </div>
+            <!-- growgif -->
+            <div onclick="harvest(4)" id="grow4" style=z-index:2>
+                <img class="growgif_row1" src="">
+            </div>
+
+            <div id="ground5">
+                <img class="grdpic_row2" src="pic/field_right.png" draggable="false">
+            </div>
+            <div onclick="harvest(5)" id="grow5">
+                <img class="growgif_row2" src="">
+            </div>
+
+            <div id="ground6">
+                <img class="grdpic_row3" src="pic/field_right.png" draggable="false">
+            </div>
+            <div onclick="harvest(6)" id="grow6">
+                <img class="growgif_row3" src="">
+            </div>
+
+
+        </div>
     </div>
 </body>
 
@@ -158,15 +159,38 @@
         /* background: url(pic/countdown.gif) center no-repeat; */
     }
 
-    .growgif {
+    .growgif_row1 {
         display: none;
-        width: 300px;
-        height: 300px;
+        width: 260px;
+        height: 335px;
     }
 
-    .grdpic {
-        width: 300px;
-        height: 300px;
+    .growgif_row2 {
+        display: none;
+        width: 310px;
+        height: 335px;
+    }
+
+    .growgif_row3 {
+        display: none;
+        width: 360px;
+        height: 335px;
+    }
+
+    .grdpic_row1 {
+        width: 260px;
+        height: 165px;
+    }
+
+    .grdpic_row2 {
+        width: 310px;
+        height: 165px;
+        z-index: 2;
+    }
+
+    .grdpic_row3 {
+        width: 360px;
+        height: 165px;
     }
 
     .grd {
@@ -205,19 +229,177 @@
         display: none;
     }
 
+    #gamebg {
+        width: 100%;
+        position: absolute;
+        z-index: -5;
+        height: 100%;
+    }
+
+    #house {
+        position: absolute;
+        left: 860px;
+        top: 0px;
+    }
+
+    #fence {
+        position: absolute;
+        left: 0px;
+        top: 150px;
+        
+    }
+
+    #billboard {
+        position: absolute;
+        left: 100px;
+        top: 400px;
+    }
+
+    #grass {
+        position: absolute;
+        left: 0px;
+        top: 210px;
+    }
+
+    #sun {
+        position: absolute;
+        left: 1600px;
+        top: 35px;
+    }
+
+    #div_ground {
+        width: 600px;
+        height: 200px;
+        position: absolute;
+        left: 340px;
+        top: 300px;
+    }
+
     #div_gameover {
         display: none;
     }
 
-    #ground1,
-    #ground2,
-    #ground3,
-    #ground4,
-    #ground5,
-    #ground6,
-    #ground7,
-    #ground8,
+    #ground1 {
+        position: absolute;
+        left: 500px;
+        top: 70px;
+        z-index: 1;
+    }
+
+    #ground2 {
+        position: absolute;
+        left: 490px;
+        top: 241px;
+    }
+
+    #ground3 {
+        position: absolute;
+        left: 465px;
+        top: 413px;
+    }
+
+    #ground4 {
+        position: absolute;
+        left: 750px;
+        top: 65px;
+    }
+
+    #ground5 {
+        position: absolute;
+        left: 785px;
+        top: 235px;
+    }
+
+    #ground6 {
+        position: absolute;
+        left: 815px;
+        top: 407px;
+    }
+
+    #ground7 {
+        position: absolute;
+        left: 240px;
+        top: 70px;
+    }
+
+    #ground8 {
+        position: absolute;
+        left: 180px;
+        top: 240px;
+    }
+
     #ground9 {
-        visibility: hidden;
+        position: absolute;
+        left: 110px;
+        top: 412px;
+    }
+
+    #grow1 {
+        position: absolute;
+        left: 500px;
+        top: -96px;
+        z-index: 1;
+    }
+
+    #grow2 {
+        position: absolute;
+        left: 490px;
+        top: 74px;
+        z-index: 2;
+    }
+
+    #grow3 {
+        position: absolute;
+        left: 465px;
+        top: 246px;
+        z-index: 3;
+    }
+
+    #grow4 {
+        position: absolute;
+        left: 750px;
+        top: -96px;
+        z-index: 1;
+        
+    }
+
+    #grow5 {
+        position: absolute;
+        left: 785px;
+        top: 74px;
+        z-index: 2;
+    }
+
+    #grow6 {
+        position: absolute;
+        left: 815px;
+        top: 246px;
+        z-index: 3;
+    }
+
+    #grow7 {
+        position: absolute;
+        left: 240px;
+        top: -96px;
+        z-index: 1;
+    }
+
+    #grow8 {
+        position: absolute;
+        left: 180px;
+        top: 74px;
+        z-index: 2;
+    }
+
+    #grow9 {
+        position: absolute;
+        left: 110px;
+        top: 246px;
+        z-index: 3;
+    }
+
+    body {
+        margin: 0;
+        overflow-x: hidden;
     }
 </style>

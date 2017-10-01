@@ -33,12 +33,12 @@ function init() {
     answerArr = [];
     resultArr = [];
 
-   
+
     //產生resultArr
     generateRange(groundnum, 1, groundnum);
 
-     //關卡設定
-     levelSettings();
+    //關卡設定
+    levelSettings();
     //倒數畫面消失
     setTimeout(function () { fadeOutPrecount(div_precountdown); }, 4000);
 }
@@ -102,7 +102,7 @@ function grow() {
         if (counter === resultArr.length) {
             clearInterval(i);
         }
-    }, 2000);
+    }, 4000);
 
 }
 //採收
@@ -140,67 +140,74 @@ function showgrow(id) {
     var element = document.getElementById(id);
     var imgele = element.getElementsByTagName('img')[0];
     console.log(imgele);
-    imgele.style.display = 'block';
-    imgele.src = "pic/blossom2.gif" + '?' + (new Date().getTime());
-}
-
-function fadeOutPrecount(id) {
-    var element = document.getElementById(id.id);
-    if (element) {
-        element.className += element.className ? ' fadeOut' : ' fadeOut';
-
-        grow();
+    imgele.style.display = 'unset';
+    //imgele.style.vertical-align='top';
+    if (id == "grow7" || id == "grow8" || id == "grow9") {
+        imgele.src = "pic/carrot_left.gif" + '?' + (new Date().getTime());
+    } else if (id == "grow1" || id == "grow2" || id == "grow3") {
+        imgele.src = "pic/carrot_middle.gif" + '?' + (new Date().getTime());
+    } else if (id == "grow4" || id == "grow5" || id == "grow6") {
+        imgele.src = "pic/carrot_right.gif" + '?' + (new Date().getTime());
     }
 }
 
-//遊戲結束
-function gameover() {
-    var gamePage = document.getElementById('div_game');
-    gamePage.style.display = 'none';
-    var gameoverPage = document.getElementById('div_gameover');
-    gameoverPage.style.display = 'block';
-}
+    function fadeOutPrecount(id) {
+        var element = document.getElementById(id.id);
+        if (element) {
+            element.className += element.className ? ' fadeOut' : ' fadeOut';
 
-//答錯
-function answerWrong() {
-    life--;
-    var element = document.getElementById('life');
-    var image = element.querySelectorAll('[src="' + lifeImg + '"]');
-    var wrongclass = document.getElementsByClassName('wrong');
-    wrongclass[0].style.visibility = 'visible';
-    setTimeout(function () {
-        wrongclass[0].style.visibility = 'hidden';
-        if (image != []) {
-            element.removeChild(image[0]);
+            grow();
         }
-        if (life == 0) {
-            //遊戲結束
-            gameover();
-        } else {
-            //這關再來一次
-            init();
-        }
-    }, 2000);
-}
+    }
 
-//答對
-function answerCorrect() {
-    var correctclass = document.getElementsByClassName('correct');
-    correctclass[0].style.visibility = 'visible';
-    setTimeout(function () {
-        correctclass[0].style.visibility = 'hidden';
-        //進入下一關
-        if (groundnum != 9) {
-            groundnum++;
-            init();
-        } else {
-            //遊戲結束
-            gameover();
-        }
+    //遊戲結束
+    function gameover() {
+        var gamePage = document.getElementById('div_game');
+        gamePage.style.display = 'none';
+        var gameoverPage = document.getElementById('div_gameover');
+        gameoverPage.style.display = 'block';
+    }
+
+    //答錯
+    function answerWrong() {
+        life--;
+        var element = document.getElementById('life');
+        var image = element.querySelectorAll('[src="' + lifeImg + '"]');
+        var wrongclass = document.getElementsByClassName('wrong');
+        wrongclass[0].style.visibility = 'visible';
+        setTimeout(function () {
+            wrongclass[0].style.visibility = 'hidden';
+            if (image != []) {
+                element.removeChild(image[0]);
+            }
+            if (life == 0) {
+                //遊戲結束
+                gameover();
+            } else {
+                //這關再來一次
+                init();
+            }
+        }, 2000);
+    }
+
+    //答對
+    function answerCorrect() {
+        var correctclass = document.getElementsByClassName('correct');
+        correctclass[0].style.visibility = 'visible';
+        setTimeout(function () {
+            correctclass[0].style.visibility = 'hidden';
+            //進入下一關
+            if (groundnum != 9) {
+                groundnum++;
+                init();
+            } else {
+                //遊戲結束
+                gameover();
+            }
 
 
-    }, 2000);
-}
+        }, 2000);
+    }
 
 
 
