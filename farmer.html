@@ -52,6 +52,9 @@
         </div>
         <div id=billboard>
             <img src="pic/billboard.png" width=300>
+            <text id="levelText">目前關數:</text>
+            <br />
+            <text id="levelInfo"></text>
         </div>
 
 
@@ -161,20 +164,23 @@
 
     .growgif_row1 {
         display: none;
-        width: 260px;
-        height: 335px;
+        width: 268px;
+        height: 227px;
+        cursor: url(pic/farmer_hand.png);
     }
 
     .growgif_row2 {
         display: none;
-        width: 310px;
-        height: 335px;
+        width: 318px;
+        height: 227px;
+        cursor: url(pic/farmer_hand.png);
     }
 
     .growgif_row3 {
         display: none;
-        width: 360px;
-        height: 335px;
+        width: 368px;
+        height: 227px;
+        cursor: url(pic/farmer_hand.png);
     }
 
     .grdpic_row1 {
@@ -246,7 +252,6 @@
         position: absolute;
         left: 0px;
         top: 150px;
-        
     }
 
     #billboard {
@@ -302,104 +307,130 @@
         position: absolute;
         left: 750px;
         top: 65px;
+        visibility: hidden;
     }
 
     #ground5 {
         position: absolute;
         left: 785px;
         top: 235px;
+        visibility: hidden;
     }
 
     #ground6 {
         position: absolute;
         left: 815px;
         top: 407px;
+        visibility: hidden;
     }
 
     #ground7 {
         position: absolute;
-        left: 240px;
+        left: 235px;
         top: 70px;
+        visibility: hidden;
     }
 
     #ground8 {
         position: absolute;
-        left: 180px;
+        left: 175px;
         top: 240px;
+        visibility: hidden;
     }
 
     #ground9 {
         position: absolute;
-        left: 110px;
+        left: 105px;
         top: 412px;
+        visibility: hidden;
     }
 
     #grow1 {
         position: absolute;
         left: 500px;
-        top: -96px;
+        top: 9.5px;
         z-index: 1;
     }
 
     #grow2 {
         position: absolute;
         left: 490px;
-        top: 74px;
+        top: 179.5px;
         z-index: 2;
     }
 
     #grow3 {
         position: absolute;
         left: 465px;
-        top: 246px;
+        top: 351.5px;
         z-index: 3;
     }
 
     #grow4 {
         position: absolute;
         left: 750px;
-        top: -96px;
+        top: 4.5px;
         z-index: 1;
-        
     }
 
     #grow5 {
         position: absolute;
         left: 785px;
-        top: 74px;
+        top: 173.5px;
         z-index: 2;
     }
 
     #grow6 {
         position: absolute;
         left: 815px;
-        top: 246px;
+        top: 345.5px;
         z-index: 3;
     }
 
     #grow7 {
         position: absolute;
-        left: 240px;
-        top: -96px;
+        left: 235px;
+        top: 9.5px;
         z-index: 1;
     }
 
     #grow8 {
         position: absolute;
-        left: 180px;
-        top: 74px;
+        left: 175px;
+        top: 178.5px;
         z-index: 2;
     }
 
     #grow9 {
         position: absolute;
-        left: 110px;
-        top: 246px;
+        left: 105px;
+        top: 350.5px;
         z-index: 3;
     }
 
     body {
         margin: 0;
         overflow-x: hidden;
+        cursor: url(pic/farmer_hand.png), pointer; 
+        
+    }
+    
+
+
+    #levelText {
+        position: absolute;
+        left: 80px;
+        top: 60px;
+        font-size: 23px;
+        font-family: 微軟正黑體;
+        font-weight: bold;
+    }
+
+    #levelInfo {
+        position: absolute;
+        left: 135px;
+        top: 100px;
+        font-size: 25px;
+        font-family: 微軟正黑體;
     }
 </style>

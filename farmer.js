@@ -6,6 +6,8 @@ var life = 3;
 var groundnum = 3;
 //生命值圖片路徑
 var lifeImg = "pic/heart.png";
+//計時4分鐘遊戲結束
+game=setTimeout(gameover, 240000);
 
 //開始遊戲
 function start() {
@@ -26,7 +28,7 @@ function init() {
         document.getElementById("div_precountdown").className.replace(/\bfadeOut\b/, '');
 
     var imageele = document.getElementsByClassName('precountdown');
-    var image = 'pic/countdown.gif' + '?' + (new Date().getTime());
+    var image = 'pic/321.gif' + '?' + (new Date().getTime());
     imageele[0].style.background = 'url(' + image + ') center no-repeat';
 
     //清空陣列
@@ -47,13 +49,13 @@ function init() {
 function displayLife(life) {
     var element = document.getElementById('life');
 
-    for (i = 1; i <= life; i++) {
-        var img = document.createElement('img');
-        img.src = lifeImg;
-        img.height = 25;
-        img.width = 25;
-        element.appendChild(img);
-    }
+    // for (i = 1; i <= life; i++) {
+    //     var img = document.createElement('img');
+    //     img.src = lifeImg;
+    //     img.height = 25;
+    //     img.width = 25;
+    //     element.appendChild(img);
+    // }
 
 }
 
@@ -73,6 +75,10 @@ function levelSettings() {
         element.style.visibility = 'visible';
 
     }
+    //現在關卡文字
+    document.getElementById('levelInfo').innerHTML = groundnum - 2;
+
+
 }
 
 //產生亂數陣列
@@ -139,7 +145,7 @@ function hide(id) {
 function showgrow(id) {
     var element = document.getElementById(id);
     var imgele = element.getElementsByTagName('img')[0];
-    console.log(imgele);
+
     imgele.style.display = 'unset';
     //imgele.style.vertical-align='top';
     if (id == "grow7" || id == "grow8" || id == "grow9") {
@@ -151,63 +157,65 @@ function showgrow(id) {
     }
 }
 
-    function fadeOutPrecount(id) {
-        var element = document.getElementById(id.id);
-        if (element) {
-            element.className += element.className ? ' fadeOut' : ' fadeOut';
+function fadeOutPrecount(id) {
+    var element = document.getElementById(id.id);
+    if (element) {
+        element.className += element.className ? ' fadeOut' : ' fadeOut';
 
-            grow();
+        grow();
+    }
+}
+
+//遊戲結束
+function gameover() {
+    var gamePage = document.getElementById('div_game');
+    gamePage.style.display = 'none';
+    var gameoverPage = document.getElementById('div_gameover');
+    gameoverPage.style.display = 'block';
+
+    clearTimeout(game);
+}
+
+//答錯
+function answerWrong() {
+    life--;
+    var element = document.getElementById('life');
+    var image = element.querySelectorAll('[src="' + lifeImg + '"]');
+    var wrongclass = document.getElementsByClassName('wrong');
+    wrongclass[0].style.visibility = 'visible';
+    setTimeout(function () {
+        wrongclass[0].style.visibility = 'hidden';
+        if (image != []) {
+            element.removeChild(image[0]);
         }
-    }
+        if (life == 0) {
+            //遊戲結束
+            gameover();
+        } else {
+            //這關再來一次
+            init();
+        }
+    }, 2000);
+}
 
-    //遊戲結束
-    function gameover() {
-        var gamePage = document.getElementById('div_game');
-        gamePage.style.display = 'none';
-        var gameoverPage = document.getElementById('div_gameover');
-        gameoverPage.style.display = 'block';
-    }
-
-    //答錯
-    function answerWrong() {
-        life--;
-        var element = document.getElementById('life');
-        var image = element.querySelectorAll('[src="' + lifeImg + '"]');
-        var wrongclass = document.getElementsByClassName('wrong');
-        wrongclass[0].style.visibility = 'visible';
-        setTimeout(function () {
-            wrongclass[0].style.visibility = 'hidden';
-            if (image != []) {
-                element.removeChild(image[0]);
-            }
-            if (life == 0) {
-                //遊戲結束
-                gameover();
-            } else {
-                //這關再來一次
-                init();
-            }
-        }, 2000);
-    }
-
-    //答對
-    function answerCorrect() {
-        var correctclass = document.getElementsByClassName('correct');
-        correctclass[0].style.visibility = 'visible';
-        setTimeout(function () {
-            correctclass[0].style.visibility = 'hidden';
-            //進入下一關
-            if (groundnum != 9) {
-                groundnum++;
-                init();
-            } else {
-                //遊戲結束
-                gameover();
-            }
+//答對
+function answerCorrect() {
+    var correctclass = document.getElementsByClassName('correct');
+    correctclass[0].style.visibility = 'visible';
+    setTimeout(function () {
+        correctclass[0].style.visibility = 'hidden';
+        //進入下一關
+        if (groundnum != 9) {
+            groundnum++;
+            init();
+        } else {
+            //遊戲結束
+            gameover();
+        }
 
 
-        }, 2000);
-    }
+    }, 2000);
+}
 
 
 
