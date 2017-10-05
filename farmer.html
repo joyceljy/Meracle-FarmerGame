@@ -76,12 +76,19 @@
             <div onclick="harvest(7)" id="grow7">
                 <img class="growgif_row1" src="">
             </div>
+            <!-- harvestgif -->
+            <div id="harvest7">
+                <img class="harvestgif_row1" src="">
+            </div>
 
             <div id="ground8">
                 <img class="grdpic_row2" src="pic/field_left.png" draggable="false">
             </div>
             <div onclick="harvest(8)" id="grow8">
                 <img class="growgif_row2" src="">
+            </div>
+            <div id="harvest8">
+                <img class="harvestgif_row2" src="">
             </div>
 
             <div id="ground9">
@@ -90,26 +97,38 @@
             <div onclick="harvest(9)" id="grow9">
                 <img class="growgif_row3" src="">
             </div>
+            <div id="harvest9">
+                <img class="harvestgif_row3" src="">
+            </div>
 
             <div id="ground1">
                 <img class="grdpic_row1" src="pic/field_middle.png" draggable="false">
             </div>
-            <div onclick="harvest(1)" id="grow1" style=z-index:2>
+            <div onclick="harvest(1)" id="grow1" >
                 <img class="growgif_row1" src="">
+            </div>
+            <div id="harvest1" >
+                <img class="harvestgif_row1" src="">
             </div>
 
             <div id="ground2">
-                <img class="grdpic_row2" src="pic/field_middle.png" draggable="false" style=z-index:2>
+                <img class="grdpic_row2" src="pic/field_middle.png" draggable="false" >
             </div>
-            <div onclick="harvest(2)" id="grow2">
+            <div onclick="harvest(2)" id="grow2" >
                 <img class="growgif_row2" src="pic/blossom2.gif">
+            </div>
+            <div id="harvest2" >
+                <img class="harvestgif_row2" src="">
             </div>
 
             <div id="ground3">
-                <img class="grdpic_row3" src="pic/field_middle.png" draggable="false" style=z-index:2>
+                <img class="grdpic_row3" src="pic/field_middle.png" draggable="false">
             </div>
-            <div onclick="harvest(3)" id="grow3">
+            <div onclick="harvest(3)" id="grow3" >
                 <img class="growgif_row3" src="pic/blossom2.gif">
+            </div>
+            <div id="harvest3">
+                <img class="harvestgif_row3" src="">
             </div>
 
 
@@ -122,6 +141,9 @@
             <div onclick="harvest(4)" id="grow4" style=z-index:2>
                 <img class="growgif_row1" src="">
             </div>
+            <div id="harvest4" >
+                <img class="harvestgif_row1" src="">
+            </div>
 
             <div id="ground5">
                 <img class="grdpic_row2" src="pic/field_right.png" draggable="false">
@@ -129,12 +151,18 @@
             <div onclick="harvest(5)" id="grow5">
                 <img class="growgif_row2" src="">
             </div>
+            <div id="harvest5">
+                <img class="harvestgif_row2" src="">
+            </div>
 
             <div id="ground6">
                 <img class="grdpic_row3" src="pic/field_right.png" draggable="false">
             </div>
             <div onclick="harvest(6)" id="grow6">
                 <img class="growgif_row3" src="">
+            </div>
+            <div id="harvest6">
+                <img class="harvestgif_row3" src="">
             </div>
 
 
@@ -162,29 +190,41 @@
         /* background: url(pic/countdown.gif) center no-repeat; */
     }
 
+    .harvestgif_row1 {
+        width: 348px;
+        height: 362px;
+    }
+
+    .harvestgif_row2 {
+        width: 418.5px;
+        height: 348px;
+    }
+
+    .harvestgif_row3 {
+        width: 485.5px;
+        height: 351px;
+    }
+
     .growgif_row1 {
-        display: none;
         width: 268px;
         height: 227px;
         cursor: url(pic/farmer_hand.png);
     }
 
     .growgif_row2 {
-        display: none;
         width: 318px;
         height: 227px;
         cursor: url(pic/farmer_hand.png);
     }
 
     .growgif_row3 {
-        display: none;
         width: 368px;
         height: 227px;
         cursor: url(pic/farmer_hand.png);
     }
 
     .grdpic_row1 {
-        width: 260px;
+        width: 263px;
         height: 165px;
     }
 
@@ -346,6 +386,7 @@
     }
 
     #grow1 {
+        display: none;
         position: absolute;
         left: 500px;
         top: 9.5px;
@@ -353,6 +394,7 @@
     }
 
     #grow2 {
+        display: none;
         position: absolute;
         left: 490px;
         top: 179.5px;
@@ -360,6 +402,7 @@
     }
 
     #grow3 {
+        display: none;
         position: absolute;
         left: 465px;
         top: 351.5px;
@@ -367,6 +410,7 @@
     }
 
     #grow4 {
+        display: none;
         position: absolute;
         left: 750px;
         top: 4.5px;
@@ -374,6 +418,7 @@
     }
 
     #grow5 {
+        display: none;
         position: absolute;
         left: 785px;
         top: 173.5px;
@@ -381,6 +426,7 @@
     }
 
     #grow6 {
+        display: none;
         position: absolute;
         left: 815px;
         top: 345.5px;
@@ -388,6 +434,7 @@
     }
 
     #grow7 {
+        display: none;
         position: absolute;
         left: 235px;
         top: 9.5px;
@@ -395,6 +442,7 @@
     }
 
     #grow8 {
+        display: none;
         position: absolute;
         left: 175px;
         top: 178.5px;
@@ -402,20 +450,81 @@
     }
 
     #grow9 {
+        display: none;
         position: absolute;
         left: 105px;
         top: 350.5px;
         z-index: 3;
     }
 
+    #harvest1 {
+        display: none;
+        position: absolute;
+        left:501px;
+        top: -123px;
+    }
+
+    #harvest2 {
+        display: none;
+        position: absolute;
+        left: 488.5px;
+        top: 59px;
+    }
+
+    #harvest3 {
+        display: none;
+        position: absolute;
+        left: 465.5px;
+        top: 227.6px;
+    }
+
+    #harvest4 {
+        display: none;
+        position: absolute;
+        left: 750px;
+        top: 4.5px;
+    }
+
+    #harvest5 {
+        display: none;
+        position: absolute;
+        left: 785px;
+        top: 173.5px;
+    }
+
+    #harvest6 {
+        display: none;
+        position: absolute;
+        left: 815px;
+        top: 345.5px;
+    }
+
+    #harvest7 {
+        display: none;
+        position: absolute;
+        left: 235px;
+        top: 9.5px;
+    }
+
+    #harvest8 {
+        display: none;
+        position: absolute;
+        left: 175px;
+        top: 178.5px;
+    }
+
+    #harvest9 {
+        display: none;
+        position: absolute;
+        left: 105px;
+        top: 350.5px;
+    }
+
     body {
         margin: 0;
         overflow-x: hidden;
-        cursor: url(pic/farmer_hand.png), pointer; 
-        
+        cursor: url(pic/farmer_hand.png), pointer;
     }
-    
-
 
     #levelText {
         position: absolute;
@@ -433,4 +542,18 @@
         font-size: 25px;
         font-family: 微軟正黑體;
     }
+
+    .changeZindexto0{
+        z-index: 0;
+    }
+    .assignZindex1{
+        z-index: 1;
+    }
+    .assignZindex2{
+        z-index: 2;
+    }
+    .assignZindex3{
+        z-index: 3;
+    }
+    
 </style>
