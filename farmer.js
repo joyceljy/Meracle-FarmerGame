@@ -6,8 +6,11 @@ var life = 3;
 var groundnum = 3;
 //生命值圖片路徑
 var lifeImg = "pic/heart.png";
+//分數
+var score=0;
 //計時4分鐘遊戲結束
 //game = setTimeout(gameover, 240000);
+//game = setTimeout(gameover, 2400)
 
 //開始遊戲
 function start() {
@@ -217,8 +220,12 @@ function gameover() {
     var gamePage = document.getElementById('div_game');
     gamePage.style.display = 'none';
     var gameoverPage = document.getElementById('div_gameover');
-    gameoverPage.style.display = 'block';
+    gameoverPage.style.display = 'unset';
+    var startPage = document.getElementById('div_startpage');
+    startPage.style.display = 'none';
 
+    document.getElementById('gameoverLevel').innerHTML += groundnum - 2;
+    document.getElementById('gameoverScore').innerHTML += score;
     clearTimeout(game);
 }
 
@@ -263,8 +270,9 @@ function answerCorrect() {
                 groundnum++;
                 init();
             } else {
-                //遊戲結束
-                gameover();
+                
+                //gameover();
+                init();
             }
 
 
