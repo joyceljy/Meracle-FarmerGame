@@ -7,7 +7,7 @@ var groundnum = 3;
 //生命值圖片路徑
 var lifeImg = "pic/heart.png";
 //分數
-var score=0;
+var score = 0;
 //計時4分鐘遊戲結束
 //game = setTimeout(gameover, 240000);
 //game = setTimeout(gameover, 2400)
@@ -111,7 +111,8 @@ function generateRange(pCount, pMin, pMax) {
 }
 //農作物生長
 function grow() {
-
+    var element = document.getElementById('div_growing');
+    element.style.display = 'unset';
     var counter = 0;
     var i = setInterval(function () {
         hideground("ground" + resultArr[counter]);
@@ -120,6 +121,7 @@ function grow() {
         counter++;
         if (counter === resultArr.length) {
             clearInterval(i);
+            setTimeout(function () { element.style.display = 'none'; }, 3000);
         }
     }, 4000);
 
@@ -270,7 +272,7 @@ function answerCorrect() {
                 groundnum++;
                 init();
             } else {
-                
+
                 //gameover();
                 init();
             }
@@ -278,7 +280,7 @@ function answerCorrect() {
 
         }, 2000);
     }, 3000)
-   
+
 }
 
 //改變index

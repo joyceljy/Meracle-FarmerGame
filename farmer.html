@@ -15,8 +15,8 @@
     <div id="div_startpage">
         <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" />
         <img src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" onclick="start();">
-        <img src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartMind" class="Center" >
-       
+        <img src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartMind" class="Center">
+
     </div>
 
     <div id="div_gameover">
@@ -30,6 +30,9 @@
         <text id="gameoverLevel" class="Center gameoverText">最高關卡：</text>
         <text id="gameoverScore" class="Center gameoverText">分數：</text>
         </img>
+    </div>
+
+    <div id="div_growing">
     </div>
 
     <!-- 遊戲畫面 -->
@@ -399,7 +402,7 @@
 
     #gamestartMind {
         width: 500px;
-        margin-top:-150px;
+        margin-top: -150px;
         margin-left: 1000px;
     }
 
@@ -470,6 +473,7 @@
         left: 500px;
         top: 9.5px;
         z-index: 1;
+        cursor: url('pic/farmer_hand.png'), auto;
     }
 
     #grow2 {
@@ -478,6 +482,7 @@
         left: 490px;
         top: 179.5px;
         z-index: 2;
+        cursor: url('pic/farmer_hand.png'), auto;
     }
 
     #grow3 {
@@ -486,6 +491,7 @@
         left: 465px;
         top: 351.5px;
         z-index: 3;
+        cursor: url('pic/farmer_hand.png'), auto;
     }
 
     #grow4 {
@@ -602,7 +608,6 @@
     body {
         margin: 0;
         overflow-x: hidden;
-        cursor: url(pic/farmer_hand.png), pointer;
     }
 
     #levelText {
@@ -636,5 +641,16 @@
 
     .assignZindex3 {
         z-index: 3;
+    }
+
+    #div_growing {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background-color: 'rgba(255,255,255,0.1)';
+        display:none;
     }
 </style>
