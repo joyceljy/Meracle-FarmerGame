@@ -233,7 +233,34 @@ function gameover() {
 
     document.getElementById('gameoverLevel').innerHTML += groundnum - 2;
     document.getElementById('gameoverScore').innerHTML += score;
-    //clearTimeout(game);
+
+    stageApi();
+   
+}
+
+//關卡花的時間Api
+function stageApi(){
+    const url = 'http://meracal.azurewebsites.net/api/FarmerGame/FarmerWaveCalculation';
+    // The data we are going to send in our request
+    
+    // The parameters we are gonna pass to the fetch function
+    let fetchData = { 
+        method: 'POST', 
+        body: JSON.stringify({
+            "Account": '222@gmail.com',
+            "Password": 'Andy',
+            "WaveDataArr":timeArr
+        }),
+        headers: {
+            //'Content-Type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    }
+    fetch(url, fetchData)
+    .then(function(response) {
+       console.log(response);
+    });
 }
 
 //答錯
