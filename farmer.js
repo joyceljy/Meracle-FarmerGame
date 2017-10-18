@@ -1,5 +1,7 @@
+
 var answerArr = [];
 var resultArr = [];
+var timeArr=[];
 //生命起始值
 var life = 3;
 //農田總數
@@ -11,11 +13,14 @@ var score = 0;
 //計時4分鐘遊戲結束
 //game = setTimeout(gameover, 240000);
 //game = setTimeout(gameover, 2400)
+let timer;
+
 
 //開始遊戲
 function start() {
     init();
     displayLife(life);
+    timer = new moment.duration(240000).timer(gameover);
 
     var startPage = document.getElementById('div_startpage');
     startPage.style.display = 'none';
@@ -228,7 +233,7 @@ function gameover() {
 
     document.getElementById('gameoverLevel').innerHTML += groundnum - 2;
     document.getElementById('gameoverScore').innerHTML += score;
-    clearTimeout(game);
+    //clearTimeout(game);
 }
 
 //答錯
@@ -269,10 +274,12 @@ function answerCorrect() {
             correctclass[0].style.visibility = 'hidden';
             //進入下一關
             if (groundnum != 9) {
+                timeArr[groundnum-3]=((240000-timer.getRemainingDuration())/1000);
+                console.log(timeArr);
                 groundnum++;
                 init();
             } else {
-
+                timeArr[groundnum-3]=timer.getRemainingDuration();
                 //gameover();
                 init();
             }

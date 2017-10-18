@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+<script src="assets/moment-develop/moment.js"></script>
+<script src="assets/moment-timer-master/lib/moment-timer.js"></script>
 <script src="assets/underscore-master/underscore.js"></script>
-
 
 <head>
     <meta charset="UTF-8">
@@ -13,15 +14,17 @@
 
     <!-- 開始畫面 -->
     <div id="div_startpage">
-        <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" />
-        <img src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" onclick="start();">
+        <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
+        <img src="./pic/farmer_logo.png" alt="" draggable="false" id="logo" class="Center">
+        <img onclick="start()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
         <img src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartMind" class="Center">
+       
 
     </div>
 
     <div id="div_gameover">
 
-        <img src="./pic/bg_all.jpg" alt="" draggable="false" id="gameoverBg" />
+        <!-- <img src="./pic/bg_all.jpg" alt="" draggable="false" id="gameoverBg" /> -->
         <img src="./pic/board.png" alt="" draggable="false" id="gameoverBoard" class="Center">
         <img src="./pic/gameover.png" alt="" draggable="false" id="gameoverText" class="Center" />
         <img src="./pic/darkblueBtn.png" alt="" draggable="false" id="gameoverBtn" class="Center">
@@ -37,7 +40,7 @@
 
     <!-- 遊戲畫面 -->
     <div id="div_game">
-        <img src="./pic/gamebg.png" alt="" draggable="false" id="gamebg">
+        <!-- <img src="./pic/gamebg.png" alt="" draggable="false" id="gamebg"> -->
         <!-- 生命值 -->
         <div id=life>
             <text>生命值：</text>
@@ -282,6 +285,16 @@
 
     #div_game {
         display: none;
+        position: absolute; 
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        background-image: url("./pic/gamebg.png");
+        background-position: center;
+        background-size: cover;
+        z-index: -5;
     }
 
     #gamebg {
@@ -395,15 +408,16 @@
     }
 
     #gamestartBtn {
-        padding-top: 600px;
-        width: 500px;
-        margin-left: 200px;
+        padding-top: 13%;
+        width: 20%;
+        margin-left: 20%;
+        z-index: 5;
     }
 
     #gamestartMind {
-        width: 500px;
-        margin-top: -150px;
-        margin-left: 1000px;
+        width: 20%;
+        margin-top: -5.9%;
+        margin-left: 55%;
     }
 
     #ground1 {
@@ -651,6 +665,34 @@
         height: 100%;
         z-index: 9999;
         background-color: 'rgba(255,255,255,0.1)';
-        display:none;
+        display: none;
     }
+    #div_startpage{
+        position: absolute; 
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        background-image: url("./pic/map.png");
+        background-position: center;
+        background-size: cover;
+    }
+    #logo{
+        padding-top: 80px;
+        width:50%;
+    }
+    #div_gameover{
+        position: absolute; 
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        background-image: url("./pic/bg_all.jpg");
+        background-position: center;
+        background-size: cover;
+    }
+  
+    
 </style>
