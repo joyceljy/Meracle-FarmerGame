@@ -13,14 +13,21 @@ var score = 0;
 //計時4分鐘遊戲結束
 let timer;
 
+
 //signalr連接
 var connection = $.hubConnection('http://signalrchattestpj.azurewebsites.net');
 var contosoChatHubProxy = connection.createHubProxy('chatHub');
+var isMindWave;
 
 
 //開始遊戲
 function start() {
-    //signalrConnect();
+    if(isMindWave==true){
+        connection.start().done(function () {
+            //console.log('Now connected, connection ID=' + connection.id);
+            contosoChatHubProxy.invoke('send', 'startGame', '');
+        });
+    }
     init();
     displayLife(life);
     timer = new moment.duration(240000).timer(gameover);
@@ -51,36 +58,33 @@ function showinsMind() {
 
     //發送開啟腦波頁面訊號
     var openInterval = setInterval(function () {
-        
-            contosoChatHubProxy.on('addNewMessageToPage', (message1, message2) => {
-                console.log('message-from-server', message1, message2);
-                if (message1 == "haveOpened" || message2 == "haveOpened") {
-                    clearInterval(openInterval);
-                }
-            });
-            connection.start().done(function () {
-                //console.log('Now connected, connection ID=' + connection.id);
-                contosoChatHubProxy.invoke('send','openMindwavePage','');
-            });
+
+        //已開啟腦波頁面訊號
+        contosoChatHubProxy.on('addNewMessageToPage', (message1, message2) => {
+            console.log('message-from-server', message1, message2);
+            if (message1 == "haveOpened" || message2 == "haveOpened") {
+                clearInterval(openInterval);
+            }
+        });
+        //開啟腦波頁面訊號
+        connection.start().done(function () {
+            //console.log('Now connected, connection ID=' + connection.id);
+            contosoChatHubProxy.invoke('send', 'openMindwavePage', '');
+        });
 
     }, 5000);
 
+    //可以開始遊戲訊號
+    contosoChatHubProxy.on('addNewMessageToPage', (message1, message2) => {
+        console.log('message-from-server', message1, message2);
+        if (message1 == "canStart") {
+            var startbtn = document.getElementById('insstartBtn2');
+            startbtn.style.display = 'unset';
+            isMindWave=true;
+        }
+    });
 
 }
-
-// function signalrConnect() {
-//     $(function () {
-//         // Reference the auto-generated proxy for the hub.
-
-//         //contosoChatHubProxy.on('addNewMessageToPage',);
-
-//         contosoChatHubProxy.on('addNewMessageToPage', (name, message) => {
-//             console.log('message-from-server', name, message);
-//         });
-
-
-//     });
-// }
 
 //初始化
 function init() {

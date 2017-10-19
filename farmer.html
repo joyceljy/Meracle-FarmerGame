@@ -18,9 +18,9 @@
     <div id="div_startpage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/farmer_logo.png" alt="" draggable="false" id="logo" class="Center">
-        <img onclick="showins()" src="./pic/startBtnText.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
+        <img onclick="showins()" src="./pic/startBtnText.png" alt="" draggable="false" id="gamestartBtn" class="Center">
         <img onclick="showinsMind()" src="./pic/startBtnTextMind.png" alt="" draggable="false" id="gamestartMind" class="Center">
-       
+
 
     </div>
 
@@ -28,14 +28,14 @@
     <div id="div_inspage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/boardins2.png" alt="" draggable="false" class="Center Board">
-        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn" class="Center" >
+        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn" class="Center">
     </div>
 
     <!-- 說明畫面(腦波) -->
     <div id="div_inspageMind">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/boardins.png" alt="" draggable="false" class="Center Board">
-        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn2" class="Center" >
+        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn2" class="Center">
     </div>
 
     <!-- 結束畫面 -->
@@ -302,7 +302,7 @@
 
     #div_game {
         display: none;
-        position: absolute; 
+        position: absolute;
         top: 0;
         left: 0;
         height: 100%;
@@ -684,8 +684,9 @@
         background-color: 'rgba(255,255,255,0.1)';
         display: none;
     }
-    #div_startpage{
-        position: absolute; 
+
+    #div_startpage {
+        position: absolute;
         top: 0;
         left: 0;
         height: 100%;
@@ -695,12 +696,14 @@
         background-position: center;
         background-size: cover;
     }
-    #logo{
+
+    #logo {
         padding-top: 80px;
-        width:50%;
+        width: 50%;
     }
-    #div_gameover{
-        position: absolute; 
+
+    #div_gameover {
+        position: absolute;
         top: 0;
         left: 0;
         height: 100%;
@@ -711,20 +714,8 @@
         background-size: cover;
     }
 
-    #div_inspage{
-        position: absolute; 
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        overflow: scroll;
-        background-image: url("./pic/map.png");
-        background-position: center;
-        background-size: cover;
-        display:none;
-    }
-    #div_inspageMind{
-        position: absolute; 
+    #div_inspage {
+        position: absolute;
         top: 0;
         left: 0;
         height: 100%;
@@ -735,15 +726,30 @@
         background-size: cover;
         display: none;
     }
-    #insstartBtn{
+
+    #div_inspageMind {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        background-image: url("./pic/map.png");
+        background-position: center;
+        background-size: cover;
+        display: none;
+    }
+
+    #insstartBtn {
         margin-top: -20vh;
         z-index: 5;
         width: 300px;
     }
-    #insstartBtn2{
+
+    #insstartBtn2 {
         margin-top: -19vh;
         z-index: 5;
         width: 300px;
+        display: none;
     }
-    
 </style>
