@@ -3,6 +3,8 @@
 <script src="assets/moment-develop/moment.js"></script>
 <script src="assets/moment-timer-master/lib/moment-timer.js"></script>
 <script src="assets/underscore-master/underscore.js"></script>
+<script src="http://signalrchattestpj.azurewebsites.net/Scripts/jquery-1.10.2.min.js"></script>
+<script src="http://signalrchattestpj.azurewebsites.net//Scripts/jquery.signalR-2.2.2.min.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -16,16 +18,31 @@
     <div id="div_startpage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/farmer_logo.png" alt="" draggable="false" id="logo" class="Center">
-        <img onclick="start()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
-        <img src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartMind" class="Center">
+        <img onclick="showins()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
+        <img onclick="showinsMind()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartMind" class="Center">
        
 
     </div>
 
+    <!-- 說明畫面 -->
+    <div id="div_inspage">
+        <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
+        <img src="./pic/board.png" alt="" draggable="false" class="Center Board">
+        <img onclick="start()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
+    </div>
+
+    <!-- 說明畫面(腦波) -->
+    <div id="div_inspageMind">
+        <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
+        <img src="./pic/board.png" alt="" draggable="false" class="Center Board">
+        <img onclick="start()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
+    </div>
+
+    <!-- 結束畫面 -->
     <div id="div_gameover">
 
         <!-- <img src="./pic/bg_all.jpg" alt="" draggable="false" id="gameoverBg" /> -->
-        <img src="./pic/board.png" alt="" draggable="false" id="gameoverBoard" class="Center">
+        <img src="./pic/board.png" alt="" draggable="false" id="Board" class="Center">
         <img src="./pic/gameover.png" alt="" draggable="false" id="gameoverText" class="Center" />
         <img src="./pic/darkblueBtn.png" alt="" draggable="false" id="gameoverBtn" class="Center">
         <text id="BtnText" class="Center gameoverText">離開遊戲</text>
@@ -354,7 +371,7 @@
         opacity: 0.4;
     }
 
-    #gameoverBoard {
+    #Board {
         width: 1000px;
         padding-top: 80px;
     }
@@ -693,6 +710,30 @@
         background-position: center;
         background-size: cover;
     }
-  
+
+    #div_inspage{
+        position: absolute; 
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        background-image: url("./pic/map.png");
+        background-position: center;
+        background-size: cover;
+        display:none;
+    }
+    #div_inspageMind{
+        position: absolute; 
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        overflow: scroll;
+        background-image: url("./pic/map.png");
+        background-position: center;
+        background-size: cover;
+        display: none;
+    }
     
 </style>

@@ -1,7 +1,7 @@
 
 var answerArr = [];
 var resultArr = [];
-var timeArr=[];
+var timeArr = [];
 //生命起始值
 var life = 3;
 //農田總數
@@ -11,23 +11,74 @@ var lifeImg = "pic/heart.png";
 //分數
 var score = 0;
 //計時4分鐘遊戲結束
-//game = setTimeout(gameover, 240000);
-//game = setTimeout(gameover, 2400)
 let timer;
+
+//signalr連接
+var connection = $.hubConnection('http://signalrchattestpj.azurewebsites.net');
+var contosoChatHubProxy = connection.createHubProxy('chatHub');
 
 
 //開始遊戲
 function start() {
+    //signalrConnect();
     init();
     displayLife(life);
     timer = new moment.duration(240000).timer(gameover);
 
-    var startPage = document.getElementById('div_startpage');
-    startPage.style.display = 'none';
-    var game = document.getElementById('div_game');
-    game.style.display = 'block';
+    // var startPage = document.getElementById('div_startpage');
+    // startPage.style.display = 'none';
+    // var game = document.getElementById('div_game');
+    // game.style.display = 'block';
 
 }
+
+//顯示說明頁面
+function showins() {
+    var startPage = document.getElementById('div_startpage');
+    startPage.style.display = 'none';
+    var ins = document.getElementById('div_inspage');
+    ins.style.display = 'block';
+}
+
+//顯示說明頁面（腦波）
+function showinsMind() {
+    var startPage = document.getElementById('div_startpage');
+    startPage.style.display = 'none';
+    var ins = document.getElementById('div_inspageMind');
+    ins.style.display = 'block';
+
+    //發送開啟腦波頁面訊號
+    var openInterval = setInterval(function () {
+        
+            contosoChatHubProxy.on('addNewMessageToPage', (message1, message2) => {
+                console.log('message-from-server', message1, message2);
+                if (message1 == "haveOpened" || message2 == "haveOpened") {
+                    clearInterval(openInterval);
+                }
+            });
+            connection.start().done(function () {
+                //console.log('Now connected, connection ID=' + connection.id);
+                contosoChatHubProxy.invoke('send','openMindwavePage','');
+            });
+
+    }, 5000);
+
+
+}
+
+// function signalrConnect() {
+//     $(function () {
+//         // Reference the auto-generated proxy for the hub.
+
+//         //contosoChatHubProxy.on('addNewMessageToPage',);
+
+//         contosoChatHubProxy.on('addNewMessageToPage', (name, message) => {
+//             console.log('message-from-server', name, message);
+//         });
+
+
+//     });
+// }
 
 //初始化
 function init() {
@@ -235,21 +286,21 @@ function gameover() {
     document.getElementById('gameoverScore').innerHTML += score;
 
     stageApi();
-   
+
 }
 
 //關卡花的時間Api
-function stageApi(){
+function stageApi() {
     const url = 'http://meracal.azurewebsites.net/api/FarmerGame/FarmerWaveCalculation';
     // The data we are going to send in our request
-    
+
     // The parameters we are gonna pass to the fetch function
-    let fetchData = { 
-        method: 'POST', 
+    let fetchData = {
+        method: 'POST',
         body: JSON.stringify({
             "Account": '222@gmail.com',
             "Password": 'Andy',
-            "WaveDataArr":timeArr
+            "WaveDataArr": timeArr
         }),
         headers: {
             //'Content-Type': 'application/x-www-form-urlencoded',
@@ -258,9 +309,9 @@ function stageApi(){
         },
     }
     fetch(url, fetchData)
-    .then(function(response) {
-       console.log(response);
-    });
+        .then(function (response) {
+            console.log(response);
+        });
 }
 
 //答錯
@@ -301,12 +352,12 @@ function answerCorrect() {
             correctclass[0].style.visibility = 'hidden';
             //進入下一關
             if (groundnum != 9) {
-                timeArr[groundnum-3]=((240000-timer.getRemainingDuration())/1000);
+                timeArr[groundnum - 3] = ((240000 - timer.getRemainingDuration()) / 1000);
                 console.log(timeArr);
                 groundnum++;
                 init();
             } else {
-                timeArr[groundnum-3]=timer.getRemainingDuration();
+                timeArr[groundnum - 3] = timer.getRemainingDuration();
                 //gameover();
                 init();
             }
