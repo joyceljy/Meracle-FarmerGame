@@ -18,8 +18,8 @@
     <div id="div_startpage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/farmer_logo.png" alt="" draggable="false" id="logo" class="Center">
-        <img onclick="showins()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
-        <img onclick="showinsMind()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartMind" class="Center">
+        <img onclick="showins()" src="./pic/startBtnText.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
+        <img onclick="showinsMind()" src="./pic/startBtnTextMind.png" alt="" draggable="false" id="gamestartMind" class="Center">
        
 
     </div>
@@ -27,22 +27,22 @@
     <!-- 說明畫面 -->
     <div id="div_inspage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
-        <img src="./pic/board.png" alt="" draggable="false" class="Center Board">
-        <img onclick="start()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
+        <img src="./pic/boardins2.png" alt="" draggable="false" class="Center Board">
+        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn" class="Center" >
     </div>
 
     <!-- 說明畫面(腦波) -->
     <div id="div_inspageMind">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
-        <img src="./pic/board.png" alt="" draggable="false" class="Center Board">
-        <img onclick="start()" src="./pic/darkgreenBtn.png" alt="" draggable="false" id="gamestartBtn" class="Center" >
+        <img src="./pic/boardins.png" alt="" draggable="false" class="Center Board">
+        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn2" class="Center" >
     </div>
 
     <!-- 結束畫面 -->
     <div id="div_gameover">
 
         <!-- <img src="./pic/bg_all.jpg" alt="" draggable="false" id="gameoverBg" /> -->
-        <img src="./pic/board.png" alt="" draggable="false" id="Board" class="Center">
+        <img src="./pic/board.png" alt="" draggable="false" class="Center Board">
         <img src="./pic/gameover.png" alt="" draggable="false" id="gameoverText" class="Center" />
         <img src="./pic/darkblueBtn.png" alt="" draggable="false" id="gameoverBtn" class="Center">
         <text id="BtnText" class="Center gameoverText">離開遊戲</text>
@@ -371,7 +371,7 @@
         opacity: 0.4;
     }
 
-    #Board {
+    .Board {
         width: 1000px;
         padding-top: 80px;
     }
@@ -734,6 +734,16 @@
         background-position: center;
         background-size: cover;
         display: none;
+    }
+    #insstartBtn{
+        margin-top: -20vh;
+        z-index: 5;
+        width: 300px;
+    }
+    #insstartBtn2{
+        margin-top: -19vh;
+        z-index: 5;
+        width: 300px;
     }
     
 </style>

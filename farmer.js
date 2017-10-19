@@ -25,10 +25,12 @@ function start() {
     displayLife(life);
     timer = new moment.duration(240000).timer(gameover);
 
-    // var startPage = document.getElementById('div_startpage');
-    // startPage.style.display = 'none';
-    // var game = document.getElementById('div_game');
-    // game.style.display = 'block';
+    var insMindPage = document.getElementById('div_inspageMind');
+    insMindPage.style.display = 'none';
+    var insPage = document.getElementById('div_inspage');
+    insPage.style.display = 'none';
+    var game = document.getElementById('div_game');
+    game.style.display = 'block';
 
 }
 
