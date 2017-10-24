@@ -183,9 +183,9 @@ function grow() {
         counter++;
         if (counter === resultArr.length) {
             clearInterval(i);
-            setTimeout(function () { element.style.display = 'none'; }, 3000);
+            setTimeout(function () { element.style.display = 'none'; }, 2500);
         }
-    }, 4000);
+    }, 2500);
 
 }
 //採收
@@ -297,7 +297,7 @@ function gameover() {
 
 //關卡花的時間Api
 function stageApi() {
-    const url = 'http://meracal.azurewebsites.net/api/FarmerGame/FarmerWaveCalculation';
+    const url = 'http://meracle.azurewebsites.net/api/FarmerGame/FarmerWaveCalculation';
     // The data we are going to send in our request
 
     // The parameters we are gonna pass to the fetch function
@@ -305,7 +305,7 @@ function stageApi() {
         method: 'POST',
         body: JSON.stringify({
             "Account": '222@gmail.com',
-            "Password": 'Andy',
+            "CdName": 'Andy',
             "WaveDataArr": timeArr
         }),
         headers: {
