@@ -15,17 +15,17 @@ let timer;
 
 
 //signalr連接
-var connection = $.hubConnection('http://signalrchattestpj.azurewebsites.net');
+var connection = $.hubConnection('http://signalrpj.azurewebsites.net');
 var contosoChatHubProxy = connection.createHubProxy('chatHub');
 var isMindWave;
 
 
 //開始遊戲
 function start() {
-    if(isMindWave==true){
+    if (isMindWave == true) {
         connection.start().done(function () {
-            //console.log('Now connected, connection ID=' + connection.id);
-            contosoChatHubProxy.invoke('send', 'startGame', '');
+            contosoChatHubProxy.invoke('group', '222@gmail.com');
+            contosoChatHubProxy.invoke('send', '222@gmail.com', 'startGame');
         });
     }
     init();
@@ -57,30 +57,39 @@ function showinsMind() {
     ins.style.display = 'block';
 
     //發送開啟腦波頁面訊號
+    connection.start().done(function () {
+        console.log('Now connected, connection ID=' + connection.id);
+        contosoChatHubProxy.invoke('group', '222@gmail.com');
+    });
     var openInterval = setInterval(function () {
 
         //已開啟腦波頁面訊號
-        contosoChatHubProxy.on('addNewMessageToPage', (message1, message2) => {
-            console.log('message-from-server', message1, message2);
-            if (message1 == "haveOpened" || message2 == "haveOpened") {
+        contosoChatHubProxy.on('addMessage', (message1) => {
+            console.log('message-from-server', message1);
+            if (message1 == "haveOpened") {
                 clearInterval(openInterval);
             }
         });
         //開啟腦波頁面訊號
+
+        //console.log('Now connected, connection ID=' + connection.id);
         connection.start().done(function () {
-            //console.log('Now connected, connection ID=' + connection.id);
-            contosoChatHubProxy.invoke('send', 'openMindwavePage', '');
+            contosoChatHubProxy.invoke('send', '222@gmail.com', 'openMindwavePage');
         });
+           
+        
+
+
 
     }, 5000);
 
     //可以開始遊戲訊號
-    contosoChatHubProxy.on('addNewMessageToPage', (message1, message2) => {
-        console.log('message-from-server', message1, message2);
+    contosoChatHubProxy.on('addMessage', (message1) => {
+        console.log('message-from-server', message1);
         if (message1 == "canStart") {
             var startbtn = document.getElementById('insstartBtn2');
             startbtn.style.display = 'unset';
-            isMindWave=true;
+            isMindWave = true;
         }
     });
 
