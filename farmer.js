@@ -41,6 +41,16 @@ function start() {
 
 }
 
+//返回開始頁面
+function backMain(){
+    var insPage = document.getElementById('div_inspage');
+    var insMindPage = document.getElementById('div_inspageMind');
+    insPage.style.display = 'none';
+    insMindPage.style.display = 'none';
+    var startPage = document.getElementById('div_startpage');
+    startPage.style.display = 'unset';
+}
+
 //顯示說明頁面
 function showins() {
     var startPage = document.getElementById('div_startpage');
@@ -63,7 +73,7 @@ function showinsMind() {
             clearInterval(openInterval);
         }
     });
-
+    
     //發送開啟腦波頁面訊號
     connection.start().done(function () {
         console.log('Now connected, connection ID=' + connection.id);

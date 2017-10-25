@@ -20,24 +20,24 @@
         <img src="./pic/farmer_logo.png" alt="" draggable="false" id="logo" class="Center">
         <img onclick="showins()" src="./pic/startBtnText.png" alt="" draggable="false" id="gamestartBtn" class="Center">
         <img onclick="showinsMind()" src="./pic/startBtnTextMind.png" alt="" draggable="false" id="gamestartMind" class="Center">
-
+        <img onclick="" src="./pic/lastBtn.png" alt="" draggable="false" id="gamestartBack" class="Center">
 
     </div>
 
     <!-- 說明畫面 -->
     <div id="div_inspage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
-        <img src="./pic/boardins2.png" alt="" draggable="false" class="Center Board">
-        <img onclick="backMain()" src="./pic/lastBtn.png" alt="" draggable="false" id="inslastBtn" class="Center">
-        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn" class="Center">
+        <img src="./pic/boardins2.png" alt="" draggable="false" class="BoardIns">
+        <img onclick="backMain()" src="./pic/lastBtn.png" alt="" draggable="false" class="inslastBtn">
+        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn" >
     </div>
 
     <!-- 說明畫面(腦波) -->
     <div id="div_inspageMind">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
-        <img src="./pic/boardins.png" alt="" draggable="false" class="Center Board">
-        <!-- <img onclick="backMain()" src="./pic/lastBtn.png" alt="" draggable="false" id="inslastBtn" class="Center"> -->
-        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn2" class="Center">
+        <img src="./pic/boardins.png" alt="" draggable="false" class="BoardIns">
+        <img onclick="backMain()" src="./pic/lastBtn.png" alt="" draggable="false" class="inslastBtn">
+        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn2">
     </div>
 
     <!-- 結束畫面 -->
@@ -378,6 +378,14 @@
         padding-top: 80px;
     }
 
+    .BoardIns {
+        width: 1000px;
+        top: 10vh;
+        left: 50vh;
+        position: absolute;
+        z-index: 1;
+    }
+
     #gameoverText {
         top: 200px;
         width: 800px;
@@ -429,14 +437,19 @@
     #gamestartBtn {
         padding-top: 13%;
         width: 20%;
-        margin-left: 20%;
+        margin-left: 15%;
         z-index: 5;
     }
 
     #gamestartMind {
         width: 20%;
         margin-top: -5.9%;
-        margin-left: 55%;
+        margin-left: 40%;
+    }
+    #gamestartBack{
+        width: 20%;
+        margin-top: -5.9%;
+        margin-left: 65%;
     }
 
     #ground1 {
@@ -749,15 +762,27 @@
     }
 
     #insstartBtn {
-        margin-top: -20vh;
         z-index: 5;
         width: 300px;
+        position: absolute;
+        top: 70vh;
+        left: 70vh;
     }
 
     #insstartBtn2 {
-        margin-top: -19vh;
         z-index: 5;
         width: 300px;
+        position: absolute;
+        top: 70vh;
+        left: 70vh;
         display: none;
+    }
+
+    .inslastBtn {
+        z-index: 5;
+        width: 300px;
+        position: absolute;
+        margin-top: 70vh;
+        margin-left: 110vh;
     }
 </style>
