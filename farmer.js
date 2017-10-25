@@ -56,32 +56,30 @@ function showinsMind() {
     var ins = document.getElementById('div_inspageMind');
     ins.style.display = 'block';
 
+    //已開啟腦波頁面訊號
+    contosoChatHubProxy.on('addMessage', (message1) => {
+        console.log('message-from-server77777', message1);
+        if (message1 == "haveOpened") {
+            clearInterval(openInterval);
+        }
+    });
+
     //發送開啟腦波頁面訊號
     connection.start().done(function () {
         console.log('Now connected, connection ID=' + connection.id);
         contosoChatHubProxy.invoke('group', '222@gmail.com');
     });
     var openInterval = setInterval(function () {
-
-        //已開啟腦波頁面訊號
-        contosoChatHubProxy.on('addMessage', (message1) => {
-            console.log('message-from-server', message1);
-            if (message1 == "haveOpened") {
-                clearInterval(openInterval);
-            }
+         //開啟腦波頁面訊號
+         connection.start().done(function () {
+            console.log('Now connectedbyInterval, connection ID=' + connection.id);
+           contosoChatHubProxy.invoke('send', '222@gmail.com', 'openMindwavePage');
         });
-        //開啟腦波頁面訊號
-
-        //console.log('Now connected, connection ID=' + connection.id);
-        connection.start().done(function () {
-            contosoChatHubProxy.invoke('send', '222@gmail.com', 'openMindwavePage');
-        });
-           
         
-
-
-
     }, 5000);
+
+
+
 
     //可以開始遊戲訊號
     contosoChatHubProxy.on('addMessage', (message1) => {
@@ -367,7 +365,7 @@ function answerCorrect() {
             correctclass[0].style.visibility = 'hidden';
             //進入下一關
             if (groundnum != 9) {
-                timeArr[groundnum - 3] = ((240000 - timer.getRemainingDuration()) / 1000);
+                timeArr[groundnum - 3] = parseFloat(((240000 - timer.getRemainingDuration()) / 1000)).toFixed(2);
                 console.log(timeArr);
                 groundnum++;
                 init();
@@ -379,7 +377,7 @@ function answerCorrect() {
 
 
         }, 2000);
-    }, 3000)
+    }, 1000)
 
 }
 

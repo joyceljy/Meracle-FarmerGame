@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <title>陣列產生</title> -->
+    <title></title>
 
 </head>
 
@@ -28,6 +28,7 @@
     <div id="div_inspage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/boardins2.png" alt="" draggable="false" class="Center Board">
+        <img onclick="backMain()" src="./pic/lastBtn.png" alt="" draggable="false" id="inslastBtn" class="Center">
         <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn" class="Center">
     </div>
 
@@ -35,6 +36,7 @@
     <div id="div_inspageMind">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/boardins.png" alt="" draggable="false" class="Center Board">
+        <!-- <img onclick="backMain()" src="./pic/lastBtn.png" alt="" draggable="false" id="inslastBtn" class="Center"> -->
         <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn2" class="Center">
     </div>
 
@@ -59,14 +61,14 @@
     <div id="div_game">
         <!-- <img src="./pic/gamebg.png" alt="" draggable="false" id="gamebg"> -->
         <!-- 生命值 -->
-        <div id=life>
+        <!-- <div id=life>
             <text>生命值：</text>
-        </div>
+        </div> -->
 
         <!-- 分數值 -->
-        <div id=score>
+        <!-- <div id=score>
             <text>目前得分：</text>
-        </div>
+        </div> -->
         <div id=sun>
             <img src="pic/sun.png" width=250 height=180 draggable="false">
         </div>
@@ -206,7 +208,7 @@
     .fadeOut {
         visibility: hidden;
         opacity: 0;
-        transition: visibility 0s 2s, opacity 2s linear;
+        transition: visibility 0s 1s, opacity 1s linear;
     }
 
     .precountdown {
