@@ -16,7 +16,7 @@ let timer;
 
 //signalr連接
 var connection = $.hubConnection('http://signalrpj.azurewebsites.net');
-var contosoChatHubProxy = connection.createHubProxy('chatHub');
+var contosoChatHubProxy = connection.createHubProxy('groupHub');
 var isMindWave;
 
 
@@ -25,12 +25,12 @@ function start() {
     if (isMindWave == true) {
         connection.start().done(function () {
             contosoChatHubProxy.invoke('group', '222@gmail.com');
-            contosoChatHubProxy.invoke('send', '222@gmail.com', 'startGame');
+            contosoChatHubProxy.invoke('send','startGame');
         });
     }
     init();
     displayLife(life);
-    timer = new moment.duration(240000).timer(gameover);
+    timer = new moment.duration(210000).timer(gameover);
 
     var insMindPage = document.getElementById('div_inspageMind');
     insMindPage.style.display = 'none';
@@ -67,7 +67,7 @@ function showinsMind() {
     ins.style.display = 'block';
 
     //已開啟腦波頁面訊號
-    contosoChatHubProxy.on('addMessage', (message1) => {
+    contosoChatHubProxy.on('addtogroup', (message1) => {
         console.log('message-from-server77777', message1);
         if (message1 == "haveOpened") {
             clearInterval(openInterval);
@@ -83,7 +83,7 @@ function showinsMind() {
          //開啟腦波頁面訊號
          connection.start().done(function () {
             console.log('Now connectedbyInterval, connection ID=' + connection.id);
-           contosoChatHubProxy.invoke('send', '222@gmail.com', 'openMindwavePage');
+           contosoChatHubProxy.invoke('send', 'openMindwavePage');
         });
         
     }, 5000);
@@ -92,7 +92,7 @@ function showinsMind() {
 
 
     //可以開始遊戲訊號
-    contosoChatHubProxy.on('addMessage', (message1) => {
+    contosoChatHubProxy.on('addtogroup', (message1) => {
         console.log('message-from-server', message1);
         if (message1 == "canStart") {
             var startbtn = document.getElementById('insstartBtn2');
