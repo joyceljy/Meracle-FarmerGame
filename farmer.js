@@ -24,8 +24,8 @@ var isMindWave;
 function start() {
     if (isMindWave == true) {
         connection.start().done(function () {
-            contosoChatHubProxy.invoke('group', '222@gmail.com');
-            contosoChatHubProxy.invoke('send','startGame');
+            contosoChatHubProxy.invoke('group', '111@gmail.com');
+            contosoChatHubProxy.invoke('send','111@gmail.com','startGame');
         });
     }
     init();
@@ -43,6 +43,7 @@ function start() {
 
 //返回開始頁面
 function backMain(){
+    connection.stop();
     var insPage = document.getElementById('div_inspage');
     var insMindPage = document.getElementById('div_inspageMind');
     insPage.style.display = 'none';
@@ -77,19 +78,16 @@ function showinsMind() {
     //發送開啟腦波頁面訊號
     connection.start().done(function () {
         console.log('Now connected, connection ID=' + connection.id);
-        contosoChatHubProxy.invoke('group', '222@gmail.com');
+        contosoChatHubProxy.invoke('group', '111@gmail.com');
     });
     var openInterval = setInterval(function () {
          //開啟腦波頁面訊號
          connection.start().done(function () {
             console.log('Now connectedbyInterval, connection ID=' + connection.id);
-           contosoChatHubProxy.invoke('send', 'openMindwavePage');
+           contosoChatHubProxy.invoke('send','111@gmail.com', 'openMindwavePage');
         });
         
     }, 5000);
-
-
-
 
     //可以開始遊戲訊號
     contosoChatHubProxy.on('addtogroup', (message1) => {
@@ -99,6 +97,12 @@ function showinsMind() {
             startbtn.style.display = 'unset';
             isMindWave = true;
         }
+    });
+
+    //如果一直未開啟app則stopconnection
+    siganlrTimer = new moment.duration(18000).timer(function(){
+        clearInterval(openInterval);
+        backMain();
     });
 
 }
@@ -314,14 +318,14 @@ function gameover() {
 
 //關卡花的時間Api
 function stageApi() {
-    const url = 'http://meracle.azurewebsites.net/api/FarmerGame/FarmerWaveCalculation';
+    const url = 'https://www.meracle.me/home/api/FarmerGame/FarmerWaveCalculation';
     // The data we are going to send in our request
 
     // The parameters we are gonna pass to the fetch function
     let fetchData = {
         method: 'POST',
         body: JSON.stringify({
-            "Account": '222@gmail.com',
+            "Account": '111@gmail.com',
             "CdName": 'Andy',
             "WaveDataArr": timeArr
         }),
