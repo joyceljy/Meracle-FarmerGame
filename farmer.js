@@ -15,10 +15,10 @@ let timer;
 
 
 //signalr連接
-var connection = $.hubConnection('http://signalrpj.azurewebsites.net');
+var connection = $.hubConnection('https://www.meracle.me/signalrpj/');
 var contosoChatHubProxy = connection.createHubProxy('groupHub');
 var isMindWave;
-
+var openInterval;
 
 //開始遊戲
 function start() {
@@ -44,6 +44,8 @@ function start() {
 //返回開始頁面
 function backMain(){
     connection.stop();
+    clearInterval(openInterval);
+    console.log('clearedInterval')
     var insPage = document.getElementById('div_inspage');
     var insMindPage = document.getElementById('div_inspageMind');
     insPage.style.display = 'none';
@@ -72,6 +74,7 @@ function showinsMind() {
         console.log('message-from-server77777', message1);
         if (message1 == "haveOpened") {
             clearInterval(openInterval);
+            console.log('clearedInterval')
         }
     });
     
@@ -80,8 +83,10 @@ function showinsMind() {
         console.log('Now connected, connection ID=' + connection.id);
         contosoChatHubProxy.invoke('group', '111@gmail.com');
     });
-    var openInterval = setInterval(function () {
+    var counter=0
+    openInterval = setInterval(function () {
          //開啟腦波頁面訊號
+         counter++;
          connection.start().done(function () {
             console.log('Now connectedbyInterval, connection ID=' + connection.id);
            contosoChatHubProxy.invoke('send','111@gmail.com', 'openMindwavePage');
@@ -100,10 +105,12 @@ function showinsMind() {
     });
 
     //如果一直未開啟app則stopconnection
-    siganlrTimer = new moment.duration(18000).timer(function(){
-        clearInterval(openInterval);
+   if(counter==40){
+       
         backMain();
-    });
+   }
+        
+   
 
 }
 
