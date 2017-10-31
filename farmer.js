@@ -25,7 +25,7 @@ function start() {
     if (isMindWave == true) {
         connection.start().done(function () {
             contosoChatHubProxy.invoke('group', '111@gmail.com');
-            contosoChatHubProxy.invoke('send','111@gmail.com','startGame');
+            contosoChatHubProxy.invoke('send', '111@gmail.com', 'startGame');
         });
     }
     init();
@@ -42,10 +42,10 @@ function start() {
 }
 
 //返回開始頁面
-function backMain(){
+function backMain() {
     connection.stop();
-    clearInterval(openInterval);
-    console.log('clearedInterval')
+    // clearInterval(openInterval);
+    console.log('clearedInterval');
     var insPage = document.getElementById('div_inspage');
     var insMindPage = document.getElementById('div_inspageMind');
     insPage.style.display = 'none';
@@ -70,29 +70,15 @@ function showinsMind() {
     ins.style.display = 'block';
 
     //已開啟腦波頁面訊號
-    contosoChatHubProxy.on('addtogroup', (message1) => {
-        console.log('message-from-server77777', message1);
-        if (message1 == "haveOpened") {
-            clearInterval(openInterval);
-            console.log('clearedInterval')
-        }
-    });
-    
+    // contosoChatHubProxy.on('addtogroup', (message1) => {
+    //     console.log('message-from-server77777', message1);
+    //     if (message1 == "haveOpened") {
+    //         clearInterval(openInterval);
+    //         console.log('clearedInterval')
+    //     }
+    // });
+
     //發送開啟腦波頁面訊號
-    connection.start().done(function () {
-        console.log('Now connected, connection ID=' + connection.id);
-        contosoChatHubProxy.invoke('group', '111@gmail.com');
-    });
-    var counter=0
-    openInterval = setInterval(function () {
-         //開啟腦波頁面訊號
-         counter++;
-         connection.start().done(function () {
-            console.log('Now connectedbyInterval, connection ID=' + connection.id);
-           contosoChatHubProxy.invoke('send','111@gmail.com', 'openMindwavePage');
-        });
-        
-    }, 5000);
 
     //可以開始遊戲訊號
     contosoChatHubProxy.on('addtogroup', (message1) => {
@@ -103,14 +89,31 @@ function showinsMind() {
             isMindWave = true;
         }
     });
+    connection.start().done(function () {
+        console.log('Now connected, connection ID=' + connection.id);
+        contosoChatHubProxy.invoke('group', '111@gmail.com');
+    });
+    // var counter=0
+    // openInterval = setInterval(function () {
+    //      //開啟腦波頁面訊號
+    //      counter++;
+    //      connection.start().done(function () {
+    //         console.log('Now connectedbyInterval, connection ID=' + connection.id);
+    //        contosoChatHubProxy.invoke('send','111@gmail.com', 'openMindwavePage');
+    //     });
+
+    // }, 5000);
+
+    
+   
 
     //如果一直未開啟app則stopconnection
-   if(counter==40){
-       
-        backMain();
-   }
-        
-   
+    //    if(counter==40){
+
+    //         backMain();
+    //    }
+
+
 
 }
 
