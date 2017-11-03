@@ -24,8 +24,8 @@ var openInterval;
 function start() {
     if (isMindWave == true) {
         connection.start().done(function () {
-            contosoChatHubProxy.invoke('group', '111@gmail.com');
-            contosoChatHubProxy.invoke('send', '111@gmail.com', 'startGame');
+            contosoChatHubProxy.invoke('group', 'joyceljy6256@gmail.com');
+            contosoChatHubProxy.invoke('send', 'joyceljy6256@gmail.com', 'startGame');
         });
     }
     init();
@@ -91,7 +91,7 @@ function showinsMind() {
     });
     connection.start().done(function () {
         console.log('Now connected, connection ID=' + connection.id);
-        contosoChatHubProxy.invoke('group', '111@gmail.com');
+        contosoChatHubProxy.invoke('group', 'joyceljy6256@gmail.com');
     });
     // var counter=0
     // openInterval = setInterval(function () {
@@ -99,7 +99,7 @@ function showinsMind() {
     //      counter++;
     //      connection.start().done(function () {
     //         console.log('Now connectedbyInterval, connection ID=' + connection.id);
-    //        contosoChatHubProxy.invoke('send','111@gmail.com', 'openMindwavePage');
+    //        contosoChatHubProxy.invoke('send','joyceljy6256@gmail.com', 'openMindwavePage');
     //     });
 
     // }, 5000);
@@ -335,7 +335,7 @@ function stageApi() {
     let fetchData = {
         method: 'POST',
         body: JSON.stringify({
-            "Account": '111@gmail.com',
+            "Account": 'joyceljy6256@gmail.com',
             "CdName": 'Andy',
             "WaveDataArr": timeArr
         }),
