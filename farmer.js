@@ -12,7 +12,9 @@ var lifeImg = "pic/heart.png";
 var score = 0;
 //計時4分鐘遊戲結束
 let timer;
-
+var login_account=window.account;
+var child_name=window.child_name;
+var login_token=window.authorization;
 
 //signalr連接
 var connection = $.hubConnection('https://www.meracle.me/signalrpj/');
@@ -24,8 +26,9 @@ var openInterval;
 function start() {
     if (isMindWave == true) {
         connection.start().done(function () {
-            contosoChatHubProxy.invoke('group', 'joyceljy6256@gmail.com');
-            contosoChatHubProxy.invoke('send', 'joyceljy6256@gmail.com', 'startGame');
+            contosoChatHubProxy.invoke('group', login_account);
+            contosoChatHubProxy.invoke('send', login_account, 'startGame');
+            contosoChatHubProxy.invoke('send', login_account, child_name);
         });
     }
     init();
@@ -91,7 +94,7 @@ function showinsMind() {
     });
     connection.start().done(function () {
         console.log('Now connected, connection ID=' + connection.id);
-        contosoChatHubProxy.invoke('group', 'joyceljy6256@gmail.com');
+        contosoChatHubProxy.invoke('group', login_account);
     });
     // var counter=0
     // openInterval = setInterval(function () {
@@ -335,14 +338,15 @@ function stageApi() {
     let fetchData = {
         method: 'POST',
         body: JSON.stringify({
-            "Account": 'joyceljy6256@gmail.com',
-            "CdName": 'Andy',
+            "Account": login_account,
+            "CdName": child_name,
             "WaveDataArr": timeArr
         }),
         headers: {
             //'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json',
             'Content-Type': 'application/json',
+            'Authorization': login_token,
         },
     }
     fetch(url, fetchData)
