@@ -15,7 +15,9 @@ let timer;
 var login_account=window.account;
 var child_name=window.child_name;
 var login_token=window.authorization;
-
+console.log(login_account);
+console.log(child_name);
+console.log(login_token);
 //signalr連接
 var connection = $.hubConnection('https://www.meracle.me/signalrpj/');
 var contosoChatHubProxy = connection.createHubProxy('groupHub');
