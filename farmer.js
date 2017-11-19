@@ -95,14 +95,15 @@ function showinsMind() {
             startbtn.style.display = 'unset';
             isMindWave = true;
         }
-         //傳送小孩名字
-         contosoChatHubProxy.invoke('send', login_account, child_name);
-         //傳送遊戲名字
-         contosoChatHubProxy.invoke('send', login_account, "FarmerGame");
+         
     });
     connection.start().done(function () {
         console.log('Now connected, connection ID=' + connection.id);
         contosoChatHubProxy.invoke('group', login_account);
+        //傳送小孩名字
+        contosoChatHubProxy.invoke('send', login_account, child_name);
+        //傳送遊戲名字
+        contosoChatHubProxy.invoke('send', login_account, "FarmerGame");
     });
     // var counter=0
     // openInterval = setInterval(function () {
