@@ -28,9 +28,14 @@ var openInterval;
 function start() {
     if (isMindWave == true) {
         connection.start().done(function () {
+            //加入群組
             contosoChatHubProxy.invoke('group', login_account);
+            //傳送可以開始遊戲訊號
             contosoChatHubProxy.invoke('send', login_account, 'startGame');
+            //傳送小孩名字
             contosoChatHubProxy.invoke('send', login_account, child_name);
+            //傳送遊戲名字
+            contosoChatHubProxy.invoke('send', login_account, "FarmerGame");
         });
     }
     init();
