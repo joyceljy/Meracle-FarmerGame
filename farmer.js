@@ -6,15 +6,17 @@ var timeArr = [];
 var life = 3;
 //農田總數
 var groundnum = 3;
+var highestStage=1;
 //生命值圖片路徑
 var lifeImg = "pic/heart.png";
 //分數
 var score = 0;
 //計時4分鐘遊戲結束
 let timer;
-var login_account=window.account;
-var child_name=window.child_name;
-var login_token=window.authorization;
+var login_account = window.account;
+var child_name = window.child_name;
+var login_token = window.authorization;
+var gametime = 210000;
 console.log(login_account);
 console.log(child_name);
 console.log(login_token);
@@ -32,7 +34,7 @@ function start() {
             contosoChatHubProxy.invoke('group', login_account);
             //傳送開始遊戲訊號
             contosoChatHubProxy.invoke('send', login_account, 'startGame');
-           
+
         });
     }
     init();
@@ -95,16 +97,17 @@ function showinsMind() {
             startbtn.style.display = 'unset';
             isMindWave = true;
         }
-         
+
     });
     connection.start().done(function () {
         console.log('Now connected, connection ID=' + connection.id);
         contosoChatHubProxy.invoke('group', login_account);
         //傳送小孩名字
-        contosoChatHubProxy.invoke('send', login_account, child_name);
+        contosoChatHubProxy.invoke('send', login_account, child_name)
         //傳送遊戲名字
-        contosoChatHubProxy.invoke('send', login_account, "FarmerGame");
+        //contosoChatHubProxy.invoke('send', login_account, 'FarmerGame');
     });
+
     // var counter=0
     // openInterval = setInterval(function () {
     //      //開啟腦波頁面訊號
@@ -116,8 +119,8 @@ function showinsMind() {
 
     // }, 5000);
 
-    
-   
+
+
 
     //如果一直未開啟app則stopconnection
     //    if(counter==40){
@@ -331,7 +334,7 @@ function gameover() {
     var startPage = document.getElementById('div_startpage');
     startPage.style.display = 'none';
 
-    document.getElementById('gameoverLevel').innerHTML += groundnum - 2;
+    document.getElementById('gameoverLevel').innerHTML += highestStage;
     document.getElementById('gameoverScore').innerHTML += score;
 
     stageApi();
@@ -405,6 +408,7 @@ function answerCorrect() {
                 timeArr[groundnum - 3] = parseFloat(((240000 - timer.getRemainingDuration()) / 1000)).toFixed(2);
                 console.log(timeArr);
                 groundnum++;
+                highestStage++;
                 init();
             } else {
                 timeArr[groundnum - 3] = timer.getRemainingDuration();
