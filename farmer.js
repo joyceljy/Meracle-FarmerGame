@@ -8,7 +8,7 @@ var life = 3;
 var groundnum = 3;
 var highestStage=1;
 //生命值圖片路徑
-var lifeImg = "pic/heart.png";
+var lifeImg = "pic/heart.png"; 
 //分數
 var score = 0;
 //計時4分鐘遊戲結束
@@ -34,7 +34,7 @@ function start() {
             contosoChatHubProxy.invoke('group', login_account);
             //傳送開始遊戲訊號
             contosoChatHubProxy.invoke('send', login_account, 'startGame');
-
+            contosoChatHubProxy.invoke('send', login_account, child_name);
         });
     }
     init();
@@ -103,9 +103,8 @@ function showinsMind() {
         console.log('Now connected, connection ID=' + connection.id);
         contosoChatHubProxy.invoke('group', login_account);
         //傳送小孩名字
-        contosoChatHubProxy.invoke('send', login_account, child_name)
-        //傳送遊戲名字
-        //contosoChatHubProxy.invoke('send', login_account, 'FarmerGame');
+        contosoChatHubProxy.invoke('send', login_account, child_name);
+
     });
 
     // var counter=0
