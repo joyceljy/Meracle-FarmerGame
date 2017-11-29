@@ -196,7 +196,7 @@ function levelSettings() {
 
     }
     //現在關卡文字
-    document.getElementById('levelInfo').innerHTML = groundnum - 2;
+    document.getElementById('levelInfo').innerHTML = highestStage;
 
 
 }
@@ -292,6 +292,7 @@ function hidegrow(id) {
 
 //顯示harvest div區塊
 function showharvest(id) {
+    playPull();
     var element = document.getElementById(id);
     var imgele = element.getElementsByTagName('img')[0];
 
@@ -371,9 +372,11 @@ function answerWrong() {
     // life--;
     //var element = document.getElementById('life');
     //var image = element.querySelectorAll('[src="' + lifeImg + '"]');
+    
     setTimeout(function () {
         var wrongclass = document.getElementsByClassName('wrong');
         wrongclass[0].style.visibility = 'visible';
+        playWrong();
         //叉叉持續2秒
         setTimeout(function () {
             wrongclass[0].style.visibility = 'hidden';
@@ -396,9 +399,11 @@ function answerWrong() {
 //答對
 function answerCorrect() {
     //先讓最後一個拔的動畫完成
+    
     setTimeout(function () {
         var correctclass = document.getElementsByClassName('correct');
         correctclass[0].style.visibility = 'visible';
+        playCorrect();
         //打鉤持續2秒
         setTimeout(function () {
             correctclass[0].style.visibility = 'hidden';
@@ -410,6 +415,7 @@ function answerCorrect() {
                 highestStage++;
                 init();
             } else {
+                highestStage++;
                 timeArr[groundnum - 3] = timer.getRemainingDuration();
                 //gameover();
                 init();
@@ -448,7 +454,18 @@ function assignindex(div) {
 
 }
 
-
+function playPull() {
+    var sound = document.getElementById("Pullaudio");
+    sound.play();
+}
+function playCorrect() {
+    var sound = document.getElementById("Correctaudio");
+    sound.play();
+}
+function playWrong() {
+    var sound = document.getElementById("Wrongaudio");
+    sound.play();
+}
 
 
 

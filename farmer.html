@@ -14,6 +14,10 @@
 
 <body>
 
+    <audio id="Pullaudio" src="./audio/pullAudio.mp3" autostart="false"></audio>
+    <audio id="Correctaudio" src="./audio/correctAudio.mp3" autostart="false"></audio>
+    <audio id="Wrongaudio" src="./audio/wrongAudio.mp3" autostart="false"></audio>
+
     <!-- 開始畫面 -->
     <div id="div_startpage">
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
@@ -29,7 +33,7 @@
         <!-- <img src="./pic/map.png" alt="" draggable="false" id="gamestartBg" /> -->
         <img src="./pic/boardins2.png" alt="" draggable="false" class="BoardIns">
         <img onclick="backMain()" src="./pic/lastBtn.png" alt="" draggable="false" class="inslastBtn">
-        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn" >
+        <img onclick="start()" src="./pic/startBtnText.png" alt="" draggable="false" id="insstartBtn">
     </div>
 
     <!-- 說明畫面(腦波) -->
@@ -446,7 +450,8 @@
         margin-top: -5.9%;
         margin-left: 40%;
     }
-    #gamestartBack{
+
+    #gamestartBack {
         width: 20%;
         margin-top: -5.9%;
         margin-left: 65%;
